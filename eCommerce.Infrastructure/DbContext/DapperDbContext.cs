@@ -15,6 +15,13 @@ namespace eCommerce.Infrastructure.DbContext
             string connectionString =
                 _configuration.GetConnectionString("PostgreSQL") ?? string.Empty;
 
+            connectionString = connectionString
+                .Replace("$DATABASE_HOST", _configuration["DATABASE_HOST"] ?? string.Empty)
+                .Replace("$DATABASE_NAME", _configuration["DATABASE_NAME"] ?? string.Empty)
+                .Replace("$DATABASE_USER", _configuration["DATABASE_USER"] ?? string.Empty)
+                .Replace("$DATABASE_PASSWORD", _configuration["DATABASE_PASSWORD"] ?? string.Empty)
+                .Replace("$DATABASE_PORT", _configuration["DATABASE_PORT"] ?? string.Empty);
+
             _connection = new NpgsqlConnection(connectionString);
         }
 

@@ -20,5 +20,10 @@ namespace eCommerce.Core.ServiceContracts
         /// <param name="request">The registration request containing user details.</param>
         /// <returns>The authentication response containing the registered user's session information.</returns>
         Task<AuthenticationResponse?> RegisterUser(RegisterRequest request);
+
+        /// <summary> Retrieves a user by their unique identifier.
+        /// </summary> <param name="id">The unique identifier of the user to retrieve.</param>
+        /// <returns>The user matching the provided identifier, or null if no match is found.</returns>
+        Task<User?> GetUserById(Guid id);
     }
 }

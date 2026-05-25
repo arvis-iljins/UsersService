@@ -11,6 +11,18 @@ namespace eCommerce.Core.Services
         private readonly IUserRepository _userRepository = userRepository;
         private readonly IMapper _mapper = mapper;
 
+        public async Task<User?> GetUserById(Guid id)
+        {
+            var userEntity = await _userRepository.GetUserById(id);
+            if (userEntity is null)
+            {
+                return null;
+            }
+            var user = _mapper.Map<User>(userEntity);
+
+            return user;
+        }
+
         public async Task<AuthenticationResponse?> Login(LoginRequest request)
         {
             ApplicationUser? user = await _userRepository.GetUserByEmailAndPassword(

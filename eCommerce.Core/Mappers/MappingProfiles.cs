@@ -16,6 +16,10 @@ namespace eCommerce.Core.Mappers
             CreateMap<RegisterRequest, ApplicationUser>()
                 .ForMember(dest => dest.Id, opt => opt.Ignore())
                 .ForMember(dest => dest.Gender, opt => opt.MapFrom(src => src.Gender.ToString()));
+
+            CreateMap<ApplicationUser, User>()
+                .ForMember(dest => dest.UserId, opt => opt.MapFrom(src => src.Id))
+                .ForMember(dest => dest.Gender, opt => opt.MapFrom(src => src.Gender));
         }
     }
 }
