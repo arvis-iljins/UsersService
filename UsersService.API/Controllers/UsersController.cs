@@ -1,9 +1,9 @@
-using UsersService.Core.ServiceContracts;
 using Microsoft.AspNetCore.Mvc;
+using UsersService.Core.ServiceContracts;
 
 namespace UsersService.API.Controllers
 {
-    [Route("[controller]")]
+    [Route("api/[controller]")]
     public class UsersController(IUserService userService) : ControllerBase
     {
         private readonly IUserService _userService = userService;

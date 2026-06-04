@@ -16,7 +16,7 @@ cd UsersService.API
 dotnet run
 ```
 
-Swagger: **http://localhost:5025/swagger**
+Swagger: **http://localhost:5080/swagger**
 
 ## Environment Variables
 
