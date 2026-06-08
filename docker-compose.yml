@@ -17,27 +17,6 @@ services:
     networks:
       - users-network
 
-  postgres:
-    image: postgres:17
-    environment:
-      - POSTGRES_DB=eCommerceDb
-      - POSTGRES_USER=arvisiljins
-      - POSTGRES_PASSWORD=xxx111
-    ports:
-      - "5434:5432"
-    volumes:
-      - users-postgres-data:/var/lib/postgresql/data
-    healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U arvisiljins -d eCommerceDb"]
-      interval: 10s
-      timeout: 5s
-      retries: 5
-    networks:
-      - users-network
-
-volumes:
-  users-postgres-data:
-
 networks:
   users-network:
     driver: bridge
